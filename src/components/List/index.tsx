@@ -1,3 +1,5 @@
+import "./List.scss";
+
 export default function List() {
   const tasks = [
     {
@@ -15,11 +17,11 @@ export default function List() {
   ];
 
   return (
-    <aside>
+    <aside className="tasksList">
       <h2>Seus estudos do dia:</h2>
       <ul>
         {tasks.map(({ title, time }, index) => (
-          <li key={index}>
+          <li key={index} className="item">
             <h3>{title}</h3>
             <span>{time}</span>
           </li>
