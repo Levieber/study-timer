@@ -3,7 +3,7 @@ import List from "./components/List";
 
 export default function App() {
   return (
-    <div className="App">
+    <div>
       <h1>Study Timer</h1>
       <Form />
       <List />
