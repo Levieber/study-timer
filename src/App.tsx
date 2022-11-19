@@ -1,10 +1,10 @@
 import Form from "./components/Form";
 import List from "./components/List";
-import "./App.scss";
+import styles from "./App.module.scss";
 
 export default function App() {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <Form />
       <List />
     </div>
