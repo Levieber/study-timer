@@ -1,10 +1,10 @@
 import Form from "./components/Form";
 import List from "./components/List";
+import "./App.scss";
 
 export default function App() {
   return (
-    <div>
-      <h1>Study Timer</h1>
+    <div className="app">
       <Form />
       <List />
     </div>
