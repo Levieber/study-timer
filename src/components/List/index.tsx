@@ -1,3 +1,4 @@
+import TaskItem from "./TaskItem";
 import styles from "./List.module.scss";
 
 export default function List() {
@@ -20,11 +21,8 @@ export default function List() {
     <aside className={styles.tasksList}>
       <h2>Seus estudos do dia:</h2>
       <ul>
-        {tasks.map(({ title, time }, index) => (
-          <li key={index} className={styles.item}>
-            <h3>{title}</h3>
-            <span>{time}</span>
-          </li>
+        {tasks.map((task, index) => (
+          <TaskItem key={index} {...task} />
         ))}
       </ul>
     </aside>
