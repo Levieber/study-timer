@@ -2,13 +2,17 @@ import Form from "./components/Form";
 import List from "./components/List";
 import styles from "./App.module.scss";
 import Timer from "./components/Timer";
+import { useState } from "react";
+import { ITask } from "./@types/Task";
 
 export default function App() {
+  const [tasks, setTasks] = useState<ITask[]>([]);
+
   return (
     <div className={styles.app}>
-      <Form />
+      <Form setTasks={setTasks} />
       <Timer />
-      <List />
+      <List tasks={tasks} />
     </div>
   );
 }

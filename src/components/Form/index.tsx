@@ -1,16 +1,21 @@
 import React from "react";
+import { ITask } from "../../@types/Task";
 import Button from "../Button";
 import styles from "./Form.module.scss";
 
-export default class Form extends React.Component {
+interface FormProps {
+  setTasks: React.Dispatch<React.SetStateAction<ITask[]>>;
+}
+
+export default class Form extends React.Component<FormProps> {
   state = {
-    task: "",
+    title: "",
     time: "00:00:00",
   };
 
   addTask = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(this.state);
+    this.props.setTasks((prevState) => [...prevState, { ...this.state }]);
   };
 
   render() {
@@ -19,8 +24,8 @@ export default class Form extends React.Component {
         <div className={styles.inputContainer}>
           <label htmlFor="task">Adicione um novo estudo:</label>
           <input
-            value={this.state.task}
-            onChange={(ev) => this.setState({ task: ev.target.value })}
+            value={this.state.title}
+            onChange={(ev) => this.setState({ title: ev.target.value })}
             type="text"
             name="task"
             id="task"
