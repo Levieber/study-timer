@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
@@ -7,14 +6,10 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-export default class Button extends React.Component<ButtonProps> {
-  render() {
-    const { type = "button", children, onClick } = this.props;
-
-    return (
-      <button type={type} className={styles.button} onClick={onClick}>
-        {children}
-      </button>
-    );
-  }
+export default function Button({ children, onClick, type }: ButtonProps) {
+  return (
+    <button type={type} className={styles.button} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
