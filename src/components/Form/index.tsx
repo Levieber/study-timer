@@ -2,6 +2,7 @@ import React from "react";
 import { ITask } from "../../@types/Task";
 import Button from "../Button";
 import styles from "./Form.module.scss";
+import { v4 as uuidv4 } from "uuid";
 
 interface FormProps {
   setTasks: React.Dispatch<React.SetStateAction<ITask[]>>;
@@ -15,7 +16,11 @@ export default class Form extends React.Component<FormProps> {
 
   addTask = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.props.setTasks((prevState) => [...prevState, { ...this.state }]);
+    this.props.setTasks((prevState) => [
+      ...prevState,
+      { ...this.state, id: uuidv4(), selected: false, done: false },
+    ]);
+    this.setState({ title: "", time: "00:00:00" });
   };
 
   render() {

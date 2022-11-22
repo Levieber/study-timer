@@ -1,11 +1,7 @@
+import { ITask } from "../../../@types/Task";
 import styles from "./TaskItem.module.scss";
 
-interface TaskProps {
-  title: string;
-  time: string;
-}
-
-export default function TaskItem({ title, time }: TaskProps) {
+export default function TaskItem({ title, time }: ITask) {
   return (
     <li className={styles.item}>
       <h3>{title}</h3>
