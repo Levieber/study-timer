@@ -4,15 +4,16 @@ import { ITask } from "../../@types/Task";
 
 interface ListProps {
   tasks: ITask[];
+  selectTask: (task: ITask) => void;
 }
 
-export default function List({ tasks }: ListProps) {
+export default function List({ tasks, selectTask }: ListProps) {
   return (
     <aside className={styles.tasksList}>
       <h2>Seus estudos do dia:</h2>
       <ul>
-        {tasks.map((task, index) => (
-          <TaskItem key={index} {...task} />
+        {tasks.map((task) => (
+          <TaskItem key={task.id} {...task} selectTask={selectTask} />
         ))}
       </ul>
     </aside>
