@@ -19,10 +19,19 @@ export default function App() {
     );
   }
 
+  function finishTask() {
+    if (selected) {
+      setSelected(undefined);
+      setTasks((prevTasks) =>
+        prevTasks.map((task) => (task.id === selected.id ? { ...task, selected: false, done: true } : task))
+      );
+    }
+  }
+
   return (
     <div className={styles.app}>
       <Form setTasks={setTasks} />
-      <Timer selected={selected} />
+      <Timer selected={selected} finishTask={finishTask} />
       <List tasks={tasks} selectTask={selectTask} />
     </div>
   );

@@ -7,9 +7,10 @@ import { timeToSeconds } from "../../common/utils/time";
 
 interface TimerProps {
   selected: ITask | undefined;
+  finishTask: () => void;
 }
 
-export default function Timer({ selected }: TimerProps) {
+export default function Timer({ selected, finishTask }: TimerProps) {
   const [time, setTime] = useState<number>();
   const [idTimer, setIdTimer] = useState<number>();
 
@@ -27,6 +28,7 @@ export default function Timer({ selected }: TimerProps) {
           setTime(time - 1);
           return counter(time - 1);
         }
+        finishTask();
       }, 1000)
     );
   };
