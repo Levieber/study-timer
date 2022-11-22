@@ -22,7 +22,7 @@ export default function App() {
   return (
     <div className={styles.app}>
       <Form setTasks={setTasks} />
-      <Timer />
+      <Timer selected={selected} />
       <List tasks={tasks} selectTask={selectTask} />
     </div>
   );
