@@ -11,12 +11,27 @@ interface TimerProps {
 
 export default function Timer({ selected }: TimerProps) {
   const [time, setTime] = useState<number>();
+  const [idTimer, setIdTimer] = useState<number>();
 
   useEffect(() => {
     if (selected?.time) {
       setTime(timeToSeconds(selected.time));
     }
+    stopCounter();
   }, [selected]);
+
+  const counter = (time: number = 0) => {
+    setIdTimer(
+      setTimeout(() => {
+        if (time > 0) {
+          setTime(time - 1);
+          return counter(time - 1);
+        }
+      }, 1000)
+    );
+  };
+
+  const stopCounter = () => clearTimeout(idTimer);
 
   return (
     <div className={styles.timer}>
@@ -24,7 +39,10 @@ export default function Timer({ selected }: TimerProps) {
       <div className={styles.clockWrapper}>
         <Clock time={time} />
       </div>
-      <Button>Iniciar</Button>
+      <div className={styles.buttonContainer}>
+        <Button onClick={() => counter(time)}>Iniciar</Button>
+        <Button onClick={() => stopCounter()}>Parar</Button>
+      </div>
     </div>
   );
 }

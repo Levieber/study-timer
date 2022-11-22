@@ -23,6 +23,11 @@
     font-size: 2rem;
   }
 
+  .buttonContainer {
+    display: flex;
+    gap: 1rem;
+  }
+
   button {
     background-color: #88bcd1;
     border-radius: 10px;
