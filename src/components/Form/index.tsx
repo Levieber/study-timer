@@ -42,7 +42,7 @@ export default class Form extends React.Component {
             required
           />
         </div>
-        <Button>Adicionar</Button>
+        <Button type="submit">Adicionar</Button>
       </form>
     );
   }
